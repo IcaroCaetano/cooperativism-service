@@ -1,0 +1,44 @@
+# Sever
+server:
+  port: 8080
+
+# Spring  
+spring:
+  application:
+    name: South System
+    title: Cooperativism Voting Management 
+    version: 1 
+  main:
+    banner-mode: CONSOLE
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:54331/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    ddl-auto: none
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+      
+# API's URL's
+api:
+  member-cpf: 
+  upload-service: https://user-info.herokuapp.com/users/
+
+
+# DOCS
+springdoc:
+  swagger-ui:
+    path: /swagger
+    disable-swagger-default-url: false
+  pathsToMatch: /**
+    
+# LOG
+logging:
+  level:
+    org.springframework: ERROR
+    br.com.southsystem.cooperativism: DEBUG
+  
