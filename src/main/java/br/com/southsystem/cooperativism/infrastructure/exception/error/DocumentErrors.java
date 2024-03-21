@@ -18,13 +18,21 @@ public class DocumentErrors {
 	/* Erros Precondition Failed */
 	public static final String ERRO_412001 = "412.001";
 
-	/* Documento não encontrado na base de dados */
+	/* Não foi localizada a Pauta informada. */
 	public static final String ERRO_422001 = "422.001";
 	
-	/* Tipo de Documento não encontrado na base de dados */
+	/* Não foi localizada nenhuma sessao pela pauta informada. */
 	public static final String ERRO_422002 = "422.002";
 	
-	/* Erro ao salvar arquivo no Bucket */
+	/* Não foi localizada o associado informado. */
 	public static final String ERRO_422003 = "422.003";
-
+	
+	/* Não foi localizada a sessão informada. */
+	public static final String ERRO_422004 = "422.004";
+	
+	/* Esta sessão se encontra expirada. Abra outra sessão. */
+	public static final String ERRO_422005 = "422.005";
+	
+	/* O associado informado já votou nessa Pauta. */
+	public static final String ERRO_422006 = "422.006";
 }

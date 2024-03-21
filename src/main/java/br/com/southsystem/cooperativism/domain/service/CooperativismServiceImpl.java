@@ -27,6 +27,7 @@ import br.com.southsystem.cooperativism.domain.model.VotingManagementModel;
 import br.com.southsystem.cooperativism.domain.port.incoming.CooperativismUseCase;
 import br.com.southsystem.cooperativism.domain.port.outcoming.PersistCooperativismPort;
 import br.com.southsystem.cooperativism.domain.port.outcoming.RetrieveCooperativismPort;
+import br.com.southsystem.cooperativism.infrastructure.exception.error.DocumentErrors;
 import br.com.southsystem.cooperativism.infrastructure.mappers.AgendaMapper;
 import br.com.southsystem.cooperativism.infrastructure.mappers.AssociateMapper;
 import br.com.southsystem.cooperativism.infrastructure.mappers.SessionMapper;
@@ -66,7 +67,7 @@ public class CooperativismServiceImpl implements CooperativismUseCase {
 			return ResponseEntity.status(HttpStatus.OK).body(listAssociates);
 		} else { 
 			logger.info("Não há nennum associado cadastrado");
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MessageResponse("Não há nennum associado cadastrado."));
+			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new MessageResponse("Não há nennum associado cadastrado."));
 		}
 	}
 
@@ -101,7 +102,7 @@ public class CooperativismServiceImpl implements CooperativismUseCase {
 		Optional<AgendaModel> agendaModel = this.retrievePort.getAgendaByID(UUID.fromString(request.getAgendaId()));
 		
 		if (!agendaModel.isPresent())
-			throw new CooperativismBusinessException("Não foi localizada a Pauta informada.");
+			throw new CooperativismBusinessException(DocumentErrors.ERRO_422001);
 		
 		try {	
 			
@@ -120,7 +121,7 @@ public class CooperativismServiceImpl implements CooperativismUseCase {
 		Optional <SessionModel> session =  this.retrievePort.getSessionByAgendaCode(code);
 		
 		if (!session.isPresent())
-			throw new CooperativismBusinessException("Não foi localizada nenhuma sessao pela pauta informada.");
+			throw new CooperativismBusinessException(DocumentErrors.ERRO_422002);
 		
 		try {
 	
@@ -139,23 +140,23 @@ public class CooperativismServiceImpl implements CooperativismUseCase {
 		Optional<AssociateModel> associateModel = this.retrievePort.getAssociateByCpf(request.getCpf());
 		
 		if (!associateModel.isPresent())
-			throw new CooperativismBusinessException("Não foi localizada o associado informado.");
+			throw new CooperativismBusinessException(DocumentErrors.ERRO_422003);
 		
 		Optional<SessionModel> sessionModel = this.retrievePort.getSessionByID(UUID.fromString(request.getSessionId()));
 		
 		if (!sessionModel.isPresent())
-			throw new CooperativismBusinessException("Não foi localizada a sessão informada.");		
+			throw new CooperativismBusinessException(DocumentErrors.ERRO_422004);		
 		
 		Long differenceInMinutes = sessionModel.get().getSessionDateInitial().until(LocalDateTime.now(), ChronoUnit.MINUTES);
 		
 		if (differenceInMinutes > sessionModel.get().getSessionTime()) {
-			throw new CooperativismBusinessException("Esta sessão se encontra expirada. Abra outra sessão.");
+			throw new CooperativismBusinessException(DocumentErrors.ERRO_422005);
 		}
 		
 		Optional<VotingManagementModel> votingModel =  this.retrievePort.getVotingByCpf(request.getCpf(), sessionModel.get().getAgenda().getCode());
 		
 		if (votingModel.isPresent()) 
-			throw new CooperativismBusinessException("O associado informado já votou nessa Pauta.");
+			throw new CooperativismBusinessException(DocumentErrors.ERRO_422006);
 		
 		try {	
 			
