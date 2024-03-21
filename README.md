@@ -1,20 +1,78 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Introdução 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Este micro-serviço tem por finalidade simular uma sessao de votação de pautas.
+Onde primeiro são cadastrados os Associados;
+Depois são cadastradas as Pautas. 
+No processo deve ser aberta uma sessão onde deve ser informado uma das pautas criadas.
+Com a sessão aberta, onde tem um tempo de duração especificado no momento da criacao da sessão. Se não for informado
+o tempo padrão será de 1 minuto.
+
+Então para vota dever ser informado a Sessão e SIM ou NAO para Votação.
+
+Os votos srão contabilizados por Pauta. E exibidos em um dos endpoints.
+
+CADASTRAR ASSOCIADO:
+http://localhost:8080/swagger-ui/index.html#/Associado/create_1
+
+CADASTRAR PAUTA:
+http://localhost:8080/swagger-ui/index.html#/Pauta/create_2
+
+ABRIR SESSÃO:
+http://localhost:8080/swagger-ui/index.html#/Sess%C3%A3o/create
+
+VOTAR:
+http://localhost:8080/swagger-ui/index.html#/Vota%C3%A7%C3%A3o/makeVote
+
+# Para dar Inicio
+Para o funciomento do micro-serviço é necessário a instalação do banco postgresl.
+Pode ser baixado no site https://www.postgresql.org/download/
+
+Após baixado basta instalar seguindo a documentação para o Sistema Operacional de uso.
+
+Deve-se criar uma conexão Host:localhost, database: postgres, user name: postgres, password: postgres e port: 54331
+
+## Observação
+
+Deve ser  instalado o Maven e o Java .
+Para execuação da aplicação
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Para rodar a aplicacao entra na pasta raíz do projeto e executar o comando:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+```bash
+
+mvn clean package
+
+```
+
+Com isso vai ser gerado um arquivo jar na pasta /target
+
+cooperativism-service-0.0.1-SNAPSHOT.jar
+
+E então para execução da aplicação:
+
+```bash
+
+cd /target
+
+java -jar cooperativism-service-0.0.1-SNAPSHOT.jar
+
+
+```
+
+Acessar  a documentação no endereço:
+
+http://localhost:8080/swagger-ui/index.html
+
+Seguir com a definição do fluxo acima.
+
+# Referencias:
+
+- [Java] https://www.oracle.com/br/java/technologies/downloads/
+- [Git] https://git-scm.com/downloads
+- [Postgres] https://www.postgresql.org/download
+- [Maven] https://maven.apache.org/download.cgi
+
+
