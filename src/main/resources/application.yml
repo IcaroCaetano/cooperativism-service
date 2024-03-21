@@ -12,7 +12,7 @@ spring:
     banner-mode: CONSOLE
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgres://uvgzxkmmzpycvs:3b8108e75c26d687769a18251f3c1aaa2f2401a91fdbf57f7f3a9b6066b992e5@ec2-107-21-67-46.compute-1.amazonaws.com:5432/d7bqapj9iae4f6 
+    url: jdbc:postgresql://ec2-107-21-67-46.compute-1.amazonaws.com:5432/d7bqapj9iae4f6
     username: uvgzxkmmzpycvs
     password: 3b8108e75c26d687769a18251f3c1aaa2f2401a91fdbf57f7f3a9b6066b992e5
   jpa:
