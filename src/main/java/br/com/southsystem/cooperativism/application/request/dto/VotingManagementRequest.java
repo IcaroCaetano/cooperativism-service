@@ -1,11 +1,17 @@
 package br.com.southsystem.cooperativism.application.request.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Responsável pelo Gerenciamento dos Votos.")
 public class VotingManagementRequest {
 	
+	@Schema(description = "Entrada de dados para inclusão do cpf o Associado ", defaultValue="46735825004")
 	private String cpf;
 	
+	@Schema(description = "Entrada de dados para inclusão do ID da Sessão ", defaultValue="UUID da Sessão Ex: b7a0fa14-4b9c-4996-afcd-b662ed4ad2e9")
 	private String sessionId;
 	
+	@Schema(description = "Entrada de dados para escolha de votação ", defaultValue="Digitar YES ou NO")
 	private String vote;
 
 	public VotingManagementRequest() {
