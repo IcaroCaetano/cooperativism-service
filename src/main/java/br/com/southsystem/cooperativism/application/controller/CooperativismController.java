@@ -64,7 +64,8 @@ public interface CooperativismController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Object> getAllAgendas();
 	
-	@Operation(summary = "Abrir uma Sessão", description = "Abrir uma nova Sessão.", tags = {"Sessão" })
+	@Operation(summary = "Abrir uma Sessão", description = "Abrir uma nova Sessão. Informe o código de uma pauta e o tempo dessa sessão em minutos.", 
+			tags = {"Sessão" })
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Associado criado com Sucesso.", content = {
 			@Content(mediaType = "application/json") }),

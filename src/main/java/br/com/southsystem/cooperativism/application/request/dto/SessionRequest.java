@@ -2,13 +2,14 @@ package br.com.southsystem.cooperativism.application.request.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Schema(description = "Responsável pela Sessão")
 public class SessionRequest {
 	
-	@NotBlank
-	@Schema(description = "Entrada de dados para inclusão do cpf do Associado ", defaultValue="46735825004")
-	private String agendaId;
+	@NotNull
+	@Schema(description = "Entrada de dados para inclusão do código da pauta ", defaultValue="1")
+	private Integer code;
 	
 	@Schema(description = "Entrada de dados para inclusão do tempo da sessão em minutos.", defaultValue="10")
 	private Integer sessionTime;
@@ -17,18 +18,18 @@ public class SessionRequest {
 		super();
 	}
 
-	private SessionRequest(@NotBlank String agendaId, Integer sessionTime) {
+	private SessionRequest(@NotBlank Integer code, Integer sessionTime) {
 		super();
-		this.agendaId = agendaId;
+		this.code = code;
 		this.sessionTime = sessionTime;
 	}
 
-	public String getAgendaId() {
-		return agendaId;
+	public Integer getCode() {
+		return code;
 	}
 
-	public void setAgendaId(String agendaId) {
-		this.agendaId = agendaId;
+	public void setCode(Integer code) {
+		this.code = code;
 	}
 
 	public Integer getSessionTime() {
@@ -41,7 +42,7 @@ public class SessionRequest {
 
 	@Override
 	public String toString() {
-		return "SessionRequest [agendaId=" + agendaId + ", sessionTime=" + sessionTime + "]";
+		return "SessionRequest [code=" + code + ", sessionTime=" + sessionTime + "]";
 	}
 	
 }

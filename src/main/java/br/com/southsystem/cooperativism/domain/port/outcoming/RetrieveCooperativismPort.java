@@ -26,5 +26,7 @@ public interface RetrieveCooperativismPort {
 	public Optional<VotingManagementModel> getVotingByCpf(String cpf, Integer code);
 	
 	public List<Object[]> getVoteCount(Integer code);
+	
+	public Optional<AgendaModel> getAgendaByCode(Integer code);
 
 }

@@ -50,7 +50,16 @@ public class CooperativismServiceImpl implements CooperativismUseCase {
 	@Override
 	public ResponseEntity<Object> createAssossiate(@Valid AssociateRequest request) {
 		try {
+			
+			Optional<AssociateModel>  associate =  this.retrievePort.getAssociateByCpf(request.getCpf());
+			
+			if (associate.isPresent()) {
+				return ResponseEntity.status(HttpStatus.CONFLICT)
+						.body(new MessageResponse("O associado de cpf " + request.getCpf() + " já foi cadastrado."));
+			}
+			
 			AssociateModel model = this.persistPort.insertAssociate(AssociateMapper.requestToModel(request));
+			
 			return ResponseEntity.status(HttpStatus.CREATED).body(model);
 		} catch (Exception e) {
 			logger.error("Ocorreu algum erro ao criar o Associado: {}", e.getMessage());
@@ -74,6 +83,14 @@ public class CooperativismServiceImpl implements CooperativismUseCase {
 	@Override
 	public ResponseEntity<Object> createAgenda(@Valid AgendaRequest request) {
 		try {
+			
+			Optional<AgendaModel> agenda = this.retrievePort.getAgendaByCode(request.getCode());
+			
+			if (agenda.isPresent()) {
+				return ResponseEntity.status(HttpStatus.CONFLICT)
+						.body(new MessageResponse("A Pauta de código " + request.getCode() + " já foi cadastrada."));
+			}
+			
 			AgendaModel model =  this.persistPort.insertAgenda(AgendaMapper.requestToModel(request));
 		return ResponseEntity.status(HttpStatus.CREATED).body(model);
 		} catch (Exception e) {
@@ -86,7 +103,6 @@ public class CooperativismServiceImpl implements CooperativismUseCase {
 	public ResponseEntity<Object> getAllAgendas() {
 		List <AgendaModel> listAgendas =  this.retrievePort.getAllAgendas();
 		
-		
 		if (!listAgendas.isEmpty()) {
 			logger.info("Listando {} pauta(s).", listAgendas.size());
 			return ResponseEntity.status(HttpStatus.OK).body(listAgendas);
@@ -98,15 +114,15 @@ public class CooperativismServiceImpl implements CooperativismUseCase {
 
 	@Override
 	public ResponseEntity<Object> createSession(@Valid SessionRequest request) {
-			
-		Optional<AgendaModel> agendaModel = this.retrievePort.getAgendaByID(UUID.fromString(request.getAgendaId()));
 		
-		if (!agendaModel.isPresent())
+		Optional<AgendaModel> agenda = this.retrievePort.getAgendaByCode(request.getCode());
+			
+		if (!agenda.isPresent())
 			throw new CooperativismBusinessException(DocumentErrors.ERRO_422001);
 		
 		try {	
 			
-			SessionModel model = this.persistPort.insertSession(SessionMapper.requestToModel(request, agendaModel.get()));
+			SessionModel model = this.persistPort.insertSession(SessionMapper.requestToModel(request, agenda.get()));
 			return ResponseEntity.status(HttpStatus.CREATED).body(model);
 			
 		} catch (Exception e) {

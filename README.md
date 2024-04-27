@@ -11,19 +11,26 @@ Então para vota dever ser informado a Sessão e SIM ou NAO para Votação.
 
 Os votos srão contabilizados por Pauta. E exibidos em um dos endpoints.
 
-CADASTRAR ASSOCIADO:
-http://localhost:8080/swagger-ui/index.html#/Associado/create_1
+# Acessando a Aplicação
 
-CADASTRAR PAUTA:
-http://localhost:8080/swagger-ui/index.html#/Pauta/create_2
+Esta aplicação foi disponibilzada na nuvem no endereço:
 
-ABRIR SESSÃO:
-http://localhost:8080/swagger-ui/index.html#/Sess%C3%A3o/create
+[Cooperativism-Service](http://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html) - https://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html
 
-VOTAR:
-http://localhost:8080/swagger-ui/index.html#/Vota%C3%A7%C3%A3o/makeVote
+
+[CADASTRAR ASSOCIADO](http://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html#/Associado/create_1) - https://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html#/Associado/create_1
+
+[CADASTRAR PAUTA](http://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html#/Pauta/create_2) - https://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html#/Pauta/create_2
+
+[ABRIR SESSÃO](http://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html#/Sess%C3%A3o/create) - https://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html#/Sess%C3%A3o/create
+
+[VOTAR](http://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html#/Vota%C3%A7%C3%A3o/makeVote) - https://my-project-cooperativismo.ue.r.appspot.com/swagger-ui/index.html#/Vota%C3%A7%C3%A3o/makeVote
+
 
 # Para dar Inicio
+
+<h4> Configurações Locais </h4>
+
 Para o funciomento do micro-serviço é necessário a instalação do banco postgresl.
 Pode ser baixado no site https://www.postgresql.org/download/
 
@@ -70,9 +77,9 @@ Seguir com a definição do fluxo acima.
 
 # Referencias:
 
-- [Java] https://www.oracle.com/br/java/technologies/downloads/
-- [Git] https://git-scm.com/downloads
-- [Postgres] https://www.postgresql.org/download
-- [Maven] https://maven.apache.org/download.cgi
+- [Java](https://www.oracle.com/br/java/technologies/downloads/) - https://www.oracle.com/br/java/technologies/downloads/
+- [Git](https://git-scm.com/downloads) - https://git-scm.com/downloads
+- [Postgres](https://www.postgresql.org/download) - https://www.postgresql.org/download
+- [Maven](https://maven.apache.org/download.cgi) - https://maven.apache.org/download.cgi)
 
 

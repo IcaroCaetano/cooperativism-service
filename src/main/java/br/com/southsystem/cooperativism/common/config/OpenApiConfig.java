@@ -15,7 +15,7 @@ public class OpenApiConfig {
 	@Bean
 	public OpenAPI customOpenAPI() {
 		return new OpenAPI().components(new Components())
-				.info(new Info().title("South System Cooperativism Voting Management Platform REST API").description("Voting Management")
+				.info(new Info().title("Cooperativism Voting Management Platform REST API").description("Voting Management")
 						.termsOfService("terms").contact(new Contact().email("icaro.caetano@gmail.com"))
 						.license(new License().name("GNU")).version("1.0"));
 	}

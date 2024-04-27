@@ -93,4 +93,9 @@ public class CooperativismServiceAdapter implements PersistCooperativismPort, Re
 		return this.votingManagementRepository.getVoteCount(code);
 	}
 
+	@Override
+	public Optional<AgendaModel> getAgendaByCode(Integer code) {
+		return this.agendaRepository.findByCode(code);
+	}
+
 }

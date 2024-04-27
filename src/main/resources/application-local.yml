@@ -12,19 +12,19 @@ spring:
     banner-mode: CONSOLE
   datasource:
     driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://34.148.0.87/admin
-#    username: admin
-#    password: admin
-    url: jdbc:postgresql://localhost:54331/postgres
+    url: jdbc:postgresql://google/mydbtest?cloudSqlInstance=my-project-cooperativismo:us-east1:admin&socketFactory=com.google.cloud.sql.postgres.SocketFactory
     username: postgres
-    password: postgres
+    password: admin
   jpa:
-    ddl-auto: none
-    show-sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    open-in-view: false
-    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  
+#    ddl-auto: none
+#    show-sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    open-in-view: false
+#    generate-ddl: true
       
 # API's URL's
 api:
