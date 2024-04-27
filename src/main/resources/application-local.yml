@@ -41,4 +41,21 @@ logging:
   level:
     org.springframework: ERROR
     br.com.southsystem.cooperativism: DEBUG
+    
+# ACTUATOR    
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+     exposure:
+       include: 'health, prometheus, metrics'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true 
+       
   
